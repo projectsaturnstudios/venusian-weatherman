@@ -1,0 +1,27 @@
+{
+  "type": "Feature",
+  "properties": {
+    "units": "si",
+    "periods": [
+      {
+        "number": 1,
+        "name": "Tonight",
+        "startTime": "2026-10-03T23:00:00-04:00",
+        "endTime": "2026-10-04T06:00:00-04:00",
+        "isDaytime": false,
+        "temperature": {
+          "unitCode": "wmoUnit:degC",
+          "value": 15.6
+        },
+        "temperatureTrend": "falling",
+        "windSpeed": {
+          "unitCode": "wmoUnit:km_h-1",
+          "value": 8
+        },
+        "windDirection": "NE",
+        "shortForecast": "Chance Rain Showers",
+        "detailedForecast": "A chance of rain showers."
+      }
+    ]
+  }
+}

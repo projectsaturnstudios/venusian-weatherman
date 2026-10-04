@@ -1,0 +1,100 @@
+<?php
+
+/*
+|--------------------------------------------------------------------------
+| Test Case
+|--------------------------------------------------------------------------
+|
+| Weatherman has no application in this suite. Tests run against plain
+| objects and Http fakes on a Factory that carries a real EventLoop, so
+| async() answers the same loop promise a sketch sees. Do not make live
+| National Weather Service calls from Pest.
+|
+| The app() polyfill below backs the DTO link-followers:
+| weathermanHttp() binds its factory as 'http' so a DTO resolves it the
+| way it does inside a sketch.
+|
+*/
+
+use ProjectSaturnStudios\Weatherman\NwsClient;
+use Voyager\Config\Repository as Config;
+use Voyager\Http\Async\HttpAsyncManager;
+use Voyager\Http\Client\Factory;
+use Voyager\IOPools\EventLoop;
+use Voyager\IOPools\LoopWaiter;
+use Voyager\IOPools\PromiseEngines\GuzzlePromiseEngine;
+use Voyager\IOPools\ResourceRegistry;
+use Voyager\IOPools\Waiter\StreamSelectWaiterBackend;
+use Voyager\Vessel\ControlPanel;
+
+function weathermanFixture(string $family, string $name): array
+{
+    $path = __DIR__.'/Fixtures/'.$family.'/'.$name.'.json';
+    $decoded = json_decode((string) file_get_contents($path), true);
+
+    if (! is_array($decoded)) {
+        throw new RuntimeException('Fixture is missing or not JSON: '.$path);
+    }
+
+    return $decoded;
+}
+
+/**
+ * A stray-proof Http factory. With $loop it rides a fresh EventLoop, so
+ * async() works and wait() borrows that loop. It is also bound as 'http'
+ * for the app() polyfill.
+ */
+function weathermanHttp(bool $loop = true): Factory
+{
+    $vessel = new ControlPanel;
+    $vessel->registerInstance('config', new Config([]));
+
+    if ($loop) {
+        $registry = new ResourceRegistry();
+        $vessel->registerInstance('event-loop', new EventLoop(
+            $registry,
+            new LoopWaiter($registry, new StreamSelectWaiterBackend(), 5_000_000),
+            new GuzzlePromiseEngine(),
+        ));
+    }
+
+    $http = new Factory(null, new HttpAsyncManager($vessel));
+    $http->preventStrayRequests();
+
+    $GLOBALS['__weatherman_test_bindings']['http'] = $http;
+
+    return $http;
+}
+
+function weathermanClient(Factory $http, string $user_agent = 'projectsaturnstudios/venusian-weatherman 0.10.0 (https://projectsaturnstudios.com)'): NwsClient
+{
+    return new NwsClient(user_agent: $user_agent, http: $http);
+}
+
+if (! function_exists('app')) {
+    /**
+     * Test polyfill: Weatherman ships no container, but DTO link-followers
+     * and the user-agent fallback resolve through app() inside a sketch.
+     */
+    function app(?string $abstract = null): mixed
+    {
+        $bindings = $GLOBALS['__weatherman_test_bindings'] ?? [];
+
+        if (is_null($abstract)) {
+            return new class($bindings) {
+                public function __construct(private array $bindings) {}
+
+                public function bound(string $abstract): bool
+                {
+                    return array_key_exists($abstract, $this->bindings);
+                }
+            };
+        }
+
+        if (! array_key_exists($abstract, $bindings)) {
+            throw new RuntimeException("Nothing bound as '{$abstract}' — call weathermanHttp() first.");
+        }
+
+        return $bindings[$abstract];
+    }
+}

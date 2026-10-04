@@ -1,0 +1,61 @@
+{
+  "type": "FeatureCollection",
+  "title": "Current watches, warnings, and advisories for California",
+  "updated": "2026-10-04T03:23:16+00:00",
+  "pagination": {
+    "next": "https://api.weather.gov/alerts?cursor=next-page"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.4, 37.8]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.example.001.1",
+        "id": "urn:oid:2.49.0.1.840.0.example.001.1",
+        "areaDesc": "San Francisco Bay Shoreline",
+        "geocode": {
+          "SAME": ["006075"],
+          "UGC": ["CAZ006"]
+        },
+        "affectedZones": ["https://api.weather.gov/zones/forecast/CAZ006"],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.example.001.0",
+            "identifier": "urn:oid:2.49.0.1.840.0.example.001.0",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-10-03T07:32:00-07:00"
+          }
+        ],
+        "sent": "2026-10-03T14:32:00-07:00",
+        "effective": "2026-10-03T14:32:00-07:00",
+        "onset": "2026-10-03T14:32:00-07:00",
+        "expires": "2026-10-04T22:00:00-07:00",
+        "ends": "2026-10-04T22:00:00-07:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Moderate",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Heat Advisory",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS San Francisco CA",
+        "headline": "Heat Advisory remains in effect until 10 PM PDT Sunday",
+        "description": "Hot conditions will continue.",
+        "instruction": "Drink plenty of fluids.",
+        "response": "Execute",
+        "code": "IPAWSv1.0",
+        "eventCode": {
+          "SAME": ["NWS"],
+          "NationalWeatherService": ["HTY"]
+        },
+        "parameters": {
+          "AWIPSidentifier": ["NPWMTR"]
+        }
+      }
+    }
+  ]
+}

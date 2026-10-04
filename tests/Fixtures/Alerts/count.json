@@ -1,0 +1,8 @@
+{
+  "total": 426,
+  "land": 107,
+  "marine": 319,
+  "regions": { "AL": 258, "AT": 5 },
+  "areas": { "PK": 258, "CA": 19 },
+  "zones": { "PKZ230": 4 }
+}

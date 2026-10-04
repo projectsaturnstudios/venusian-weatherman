@@ -1,0 +1,8 @@
+{
+  "@context": [],
+  "eventTypes": [
+    "Air Quality Alert",
+    "Heat Advisory",
+    "Tornado Warning"
+  ]
+}

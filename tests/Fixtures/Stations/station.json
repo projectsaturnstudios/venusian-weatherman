@@ -1,0 +1,20 @@
+{
+  "type": "Feature",
+  "geometry": {
+    "type": "Point",
+    "coordinates": [-77.0377, 38.8483]
+  },
+  "properties": {
+    "@id": "https://api.weather.gov/stations/KDCA",
+    "@type": "wx:ObservationStation",
+    "elevation": { "unitCode": "wmoUnit:m", "value": 3.9624 },
+    "stationIdentifier": "KDCA",
+    "name": "Washington/Reagan National Airport, DC",
+    "timeZone": "America/New_York",
+    "provider": "ASOS-HFM",
+    "subProvider": "",
+    "forecast": "https://api.weather.gov/zones/forecast/VAZ054",
+    "county": "https://api.weather.gov/zones/county/VAC013",
+    "fireWeatherZone": "https://api.weather.gov/zones/fire/VAZ054"
+  }
+}

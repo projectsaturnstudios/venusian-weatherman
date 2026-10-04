@@ -1,0 +1,11 @@
+{
+  "type": "Feature",
+  "geometry": null,
+  "properties": {
+    "id": "urn:oid:2.49.0.1.840.0.example.001.1",
+    "event": "Heat Advisory",
+    "status": "Actual",
+    "severity": "Moderate",
+    "headline": "Heat Advisory remains in effect until 10 PM PDT Sunday"
+  }
+}

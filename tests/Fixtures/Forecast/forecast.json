@@ -1,0 +1,46 @@
+{
+  "type": "Feature",
+  "geometry": null,
+  "properties": {
+    "units": "us",
+    "forecastGenerator": "BaselineForecastGenerator",
+    "generatedAt": "2026-10-04T02:55:00+00:00",
+    "updateTime": "2026-10-04T02:55:00+00:00",
+    "validTimes": "2026-10-03T20:00:00+00:00/P7DT8H",
+    "elevation": { "unitCode": "wmoUnit:m", "value": 6.096 },
+    "periods": [
+      {
+        "number": 1,
+        "name": "Tonight",
+        "startTime": "2026-10-03T23:00:00-04:00",
+        "endTime": "2026-10-04T06:00:00-04:00",
+        "isDaytime": false,
+        "temperature": 60,
+        "temperatureUnit": "F",
+        "temperatureTrend": null,
+        "probabilityOfPrecipitation": { "unitCode": "wmoUnit:percent", "value": 33 },
+        "windSpeed": "5 mph",
+        "windDirection": "NE",
+        "icon": "https://api.weather.gov/icons/land/night/rain_showers,20?size=medium",
+        "shortForecast": "Chance Rain Showers",
+        "detailedForecast": "A chance of rain showers. Mostly cloudy, with a low around 60."
+      },
+      {
+        "number": 2,
+        "name": "Sunday",
+        "startTime": "2026-10-04T06:00:00-04:00",
+        "endTime": "2026-10-04T18:00:00-04:00",
+        "isDaytime": true,
+        "temperature": 78,
+        "temperatureUnit": "F",
+        "temperatureTrend": "rising",
+        "probabilityOfPrecipitation": { "unitCode": "wmoUnit:percent", "value": 10 },
+        "windSpeed": "8 mph",
+        "windDirection": "S",
+        "icon": "https://api.weather.gov/icons/land/day/sct?size=medium",
+        "shortForecast": "Mostly Sunny",
+        "detailedForecast": "Mostly sunny, with a high near 78."
+      }
+    ]
+  }
+}

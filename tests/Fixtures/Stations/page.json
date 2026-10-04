@@ -1,0 +1,30 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-77.0377, 38.8483] },
+      "properties": {
+        "stationIdentifier": "KDCA",
+        "name": "Washington/Reagan National Airport, DC",
+        "timeZone": "America/New_York"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-77.4565, 38.9445] },
+      "properties": {
+        "stationIdentifier": "KIAD",
+        "name": "Washington/Dulles International Airport, VA",
+        "timeZone": "America/New_York"
+      }
+    }
+  ],
+  "observationStations": [
+    "https://api.weather.gov/stations/KDCA",
+    "https://api.weather.gov/stations/KIAD"
+  ],
+  "pagination": {
+    "next": "https://api.weather.gov/stations?cursor=next-page"
+  }
+}
